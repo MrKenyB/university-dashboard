@@ -1,0 +1,6 @@
+[
+    { "id": 1, "name": "John Doe", "email": "john.doe@example.com", "major": "Computer Science", "year": 2020 },
+    { "id": 2, "name": "Jane Smith", "email": "jane.smith@example.com", "major": "Mathematics", "year": 2020 },
+    { "id": 3, "name": "Alice Johnson", "email": "alice.johnson@example.com", "major": "Physics", "year": 2021 }
+  ]
+  
