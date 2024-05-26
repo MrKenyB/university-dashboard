@@ -7,7 +7,7 @@ const Navbar = () => {
     <AppBar position="static">
       <Toolbar>
         <Typography variant="h6">
-          University Dashboard
+          Tableau de Bord de l'Université
         </Typography>
       </Toolbar>
     </AppBar>

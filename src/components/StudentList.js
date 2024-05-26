@@ -1,23 +1,18 @@
 // src/components/StudentList.js
 import React from 'react';
-import { List, ListItem, ListItemText, Divider } from '@mui/material';
+import { Grid } from '@mui/material';
+import StudentCard from './StudentCard';
 
-const StudentList = React.memo(({ students }) => {
+const StudentList = ({ students }) => {
   return (
-    <List>
+    <Grid container spacing={3}>
       {students.map(student => (
-        <React.Fragment key={student.id}>
-          <ListItem>
-            <ListItemText
-              primary={student.name}
-              secondary={`Major: ${student.major}, Year: ${student.year}`}
-            />
-          </ListItem>
-          <Divider />
-        </React.Fragment>
+        <Grid item key={student.id} xs={12} sm={6} md={4}>
+          <StudentCard student={student} />
+        </Grid>
       ))}
-    </List>
+    </Grid>
   );
-});
+};
 
 export default StudentList;

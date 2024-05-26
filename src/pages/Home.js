@@ -6,10 +6,10 @@ import { Container, Typography, Button } from '@mui/material';
 const Home = () => {
   return (
     <Container>
-      <Typography variant="h2" gutterBottom>Welcome to the University Dashboard</Typography>
+      <Typography variant="h2" gutterBottom>Bienvenue sur le Tableau de Bord de l'Université DGC</Typography>
       <Button variant="contained" color="primary">
         <Link to="/dashboard" style={{ color: 'white', textDecoration: 'none' }}>
-          Go to Dashboard
+          Aller au Tableau de Bord
         </Link>
       </Button>
     </Container>

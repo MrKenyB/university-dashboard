@@ -53,18 +53,18 @@ const Dashboard = () => {
         setLoading(false);
       })
       .catch(error => {
-        setError('There was an error fetching the student data!');
+        setError('Une erreur s\'est produite lors de la récupération des données des étudiants !');
         setLoading(false);
       });
   }, [year, major, name, sort, page]);
 
   return (
     <Container>
-      <Typography variant="h4" gutterBottom>Student Dashboard</Typography>
+      <Typography variant="h4" gutterBottom>Tableau de Bord des Étudiants</Typography> {/* Changement de "Student Dashboard" à "Tableau de Bord des Étudiants" */}
       <Grid container spacing={3} alignItems="center">
         <Grid item xs={12} sm={3}>
           <Select value={year} onChange={e => setYear(e.target.value)} displayEmpty fullWidth>
-            <MenuItem value="" disabled>Select Year</MenuItem>
+            <MenuItem value="" disabled>Sélectionner l'année</MenuItem> {/* Changement de "Select Year" à "Sélectionner l'année" */}
             <MenuItem value={2020}>2020</MenuItem>
             <MenuItem value={2021}>2021</MenuItem>
             <MenuItem value={2022}>2022</MenuItem>
@@ -72,7 +72,7 @@ const Dashboard = () => {
         </Grid>
         <Grid item xs={12} sm={3}>
           <TextField
-            label="Search by Major"
+            label="Rechercher par filière"
             variant="outlined"
             value={major}
             onChange={e => setMajor(e.target.value)}
@@ -81,7 +81,7 @@ const Dashboard = () => {
         </Grid>
         <Grid item xs={12} sm={3}>
           <TextField
-            label="Search by Name"
+            label="Rechercher par nom"
             variant="outlined"
             value={name}
             onChange={e => setName(e.target.value)}
@@ -90,12 +90,12 @@ const Dashboard = () => {
         </Grid>
         <Grid item xs={12} sm={3}>
           <FormControl fullWidth>
-            <InputLabel>Sort By</InputLabel>
+            <InputLabel>Trier par</InputLabel> {/* Changement de "Sort By" à "Trier par" */}
             <Select value={sort} onChange={e => setSort(e.target.value)} displayEmpty fullWidth>
-              <MenuItem value="">None</MenuItem>
-              <MenuItem value="name">Name</MenuItem>
-              <MenuItem value="major">Major</MenuItem>
-              <MenuItem value="year">Year</MenuItem>
+              <MenuItem value="">Aucun</MenuItem> {/* Changement de "None" à "Aucun" */}
+              <MenuItem value="name">Nom</MenuItem>
+              <MenuItem value="major">Filière</MenuItem> {/* Changement de "Major" à "Filière" */}
+              <MenuItem value="year">Année</MenuItem> {/* Changement de "Year" à "Année" */}
             </Select>
           </FormControl>
         </Grid>
