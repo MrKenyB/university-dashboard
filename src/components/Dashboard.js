@@ -4,6 +4,7 @@ import axios from 'axios';
 import { Container, Typography, Select, MenuItem, TextField, Grid, Pagination, CircularProgress, Alert, FormControl, InputLabel } from '@mui/material';
 import StudentList from './StudentList';
 import Statistics from './Statistics';
+import StudentForm from './StudentForm'; // Import du nouveau composant pour afficher les détails de l'étudiant
 
 const Dashboard = () => {
   const [year, setYear] = useState('');
@@ -15,6 +16,7 @@ const Dashboard = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [sort, setSort] = useState('');
+  const [selectedStudent, setSelectedStudent] = useState(null); // État pour stocker les détails de l'étudiant sélectionné
   const studentsPerPage = 10;
 
   useEffect(() => {
@@ -58,13 +60,23 @@ const Dashboard = () => {
       });
   }, [year, major, name, sort, page]);
 
+  // Fonction pour afficher les détails de l'étudiant sélectionné
+  const showStudentDetails = (student) => {
+    setSelectedStudent(student);
+  };
+
+  // Fonction pour cacher les détails de l'étudiant
+  const hideStudentDetails = () => {
+    setSelectedStudent(null);
+  };
+
   return (
     <Container>
-      <Typography variant="h4" gutterBottom>Tableau de Bord des Étudiants</Typography> {/* Changement de "Student Dashboard" à "Tableau de Bord des Étudiants" */}
+      <Typography variant="h4" gutterBottom>Tableau de Bord des Étudiants</Typography>
       <Grid container spacing={3} alignItems="center">
         <Grid item xs={12} sm={3}>
           <Select value={year} onChange={e => setYear(e.target.value)} displayEmpty fullWidth>
-            <MenuItem value="" disabled>Sélectionner l'année</MenuItem> {/* Changement de "Select Year" à "Sélectionner l'année" */}
+            <MenuItem value="" disabled>Sélectionner l'année</MenuItem>
             <MenuItem value={2020}>2020</MenuItem>
             <MenuItem value={2021}>2021</MenuItem>
             <MenuItem value={2022}>2022</MenuItem>
@@ -90,12 +102,12 @@ const Dashboard = () => {
         </Grid>
         <Grid item xs={12} sm={3}>
           <FormControl fullWidth>
-            <InputLabel>Trier par</InputLabel> {/* Changement de "Sort By" à "Trier par" */}
+            <InputLabel>Trier par</InputLabel>
             <Select value={sort} onChange={e => setSort(e.target.value)} displayEmpty fullWidth>
-              <MenuItem value="">Aucun</MenuItem> {/* Changement de "None" à "Aucun" */}
+              <MenuItem value="">Aucun</MenuItem>
               <MenuItem value="name">Nom</MenuItem>
-              <MenuItem value="major">Filière</MenuItem> {/* Changement de "Major" à "Filière" */}
-              <MenuItem value="year">Année</MenuItem> {/* Changement de "Year" à "Année" */}
+              <MenuItem value="major">Filière</MenuItem>
+              <MenuItem value="year">Année</MenuItem>
             </Select>
           </FormControl>
         </Grid>
@@ -106,15 +118,23 @@ const Dashboard = () => {
         <Alert severity="error" style={{ marginTop: '20px' }}>{error}</Alert>
       ) : (
         <>
-          {students.length > 0 && <Statistics students={students} />}
-          {students.length > 0 && <StudentList students={students} />}
-          <Pagination
-            count={totalPages}
-            page={page}
-            onChange={(event, value) => setPage(value)}
-            color="primary"
-            style={{ marginTop: '20px' }}
-          />
+          {selectedStudent ? (
+            <StudentForm student={selectedStudent} onHide={hideStudentDetails} />
+          ) : (
+            <>
+              {students.length > 0 && <Statistics students={students} />}
+              {students.length > 0 && (
+                <StudentList students={students} onStudentClick={showStudentDetails} />
+              )}
+              <Pagination
+                count={totalPages}
+                page={page}
+                onChange={(event, value) => setPage(value)}
+                color="primary"
+                style={{ marginTop: '20px' }}
+              />
+            </>
+          )}
         </>
       )}
     </Container>
