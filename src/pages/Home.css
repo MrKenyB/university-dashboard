@@ -16,7 +16,7 @@
     background-size: cover; /* Couvrir toute la page avec l'image */
     background-position: center; /* Centrer l'image */
     background-attachment: fixed; /* Fixer l'image pour qu'elle reste en arrière-plan */
-    filter: blur(5px); /* Appliquer un flou à l'arrière-plan */
+    filter: blur(2px); /* Appliquer un flou à l'arrière-plan */
     z-index: -1; /* Placer en arrière-plan */
   }
   
@@ -27,6 +27,7 @@
     margin: 250px auto; /* Centrer le container horizontalement et le décaler vers le bas */
     max-width: 800px; /* Largeur maximale du container */
     text-align: center; /* Centrer le contenu du container */
+    font-family: 'Arial', sans-serif; /* Police de caractères pour le texte */
   }
   
   .container h2 {
@@ -36,5 +37,12 @@
   
   .container button {
     margin-top: 20px; /* Espacement au-dessus du bouton */
+    font-family: 'Arial', sans-serif; /* Police de caractères pour le bouton */
+    transition: background-color 0.3s ease, color 0.3s ease; /* Transition fluide pour le changement de couleur de fond et de texte */
+  }
+  
+  .container button:hover {
+    background: var(--hoverB);
+   border-bottom: 2px solid var(--bbottom);
   }
   
