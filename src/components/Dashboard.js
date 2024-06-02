@@ -78,9 +78,9 @@ const Dashboard = () => {
   }, {});
 
   return (
-    <Container>
+    <Container style={{ padding: '20px' }}>
       <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1 }}>
-        <Typography variant="h4" gutterBottom>Tableau de Bord des Étudiants</Typography>
+      <Typography variant="h4" gutterBottom style={{ marginBottom: '20px', borderBottom: '2px solid #333', textAlign: 'center', padding: '10px 0', color: '#333', textTransform: 'uppercase' }}>Tableau de Bord des Étudiants</Typography>
       </motion.div>
       <motion.div initial={{ y: -20 }} animate={{ y: 0 }} transition={{ duration: 0.5 }}>
         <Grid container spacing={3} alignItems="center">
@@ -126,7 +126,9 @@ const Dashboard = () => {
         </Grid>
       </motion.div>
       {loading ? (
-        <CircularProgress style={{ marginTop: '20px' }} />
+        <div style={{ display: 'flex', justifyContent: 'center', marginTop: '20px' }}>
+          <CircularProgress color="primary" />
+        </div>
       ) : error ? (
         <Alert severity="error" style={{ marginTop: '20px' }}>{error}</Alert>
       ) : (
@@ -135,16 +137,16 @@ const Dashboard = () => {
             <StudentForm student={selectedStudent} onHide={hideStudentDetails} />
           ) : (
             <>
-              <Statistics students={allStudents} />
-              <StudentList students={students} onStudentClick={showStudentDetails} />
+              <Statistics students={allStudents} style={{ marginTop: '20px' }} />
+              <StudentList students={students} onStudentClick={showStudentDetails} style={{ marginTop: '20px' }} />
               <Pagination
                 count={totalPages}
                 page={page}
                 onChange={(event, value) => setPage(value)}
                 color="primary"
-                style={{ marginTop: '20px' }}
+                style={{ marginTop: '20px', display: 'flex', justifyContent: 'center' }}
               />
-              <YearlyStudentCount totalStudents={totalStudents} />
+              <YearlyStudentCount totalStudents={totalStudents} style={{ marginTop: '20px' }} />
             </>
           )}
         </motion.div>
