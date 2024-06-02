@@ -115,12 +115,12 @@ const Dashboard = () => {
           <Grid item xs={12} sm={3}>
             <FormControl fullWidth>
               <InputLabel>Trier par</InputLabel>
-              <Select value={sort} onChange={e => setSort(e.target.value)} displayEmpty fullWidth>
-                <MenuItem value="">Aucun</MenuItem>
-                <MenuItem value="name">Nom</MenuItem>
-                <MenuItem value="major">Filière</MenuItem>
-                <MenuItem value="year">Année</MenuItem>
-              </Select>
+                <Select value={sort} onChange={e => setSort(e.target.value)} displayEmpty fullWidth>
+                  <MenuItem value="none">Aucun</MenuItem>
+                  <MenuItem value="name">Nom</MenuItem>
+                  <MenuItem value="major">Filière</MenuItem>
+                  <MenuItem value="year">Année</MenuItem>
+               </Select>
             </FormControl>
           </Grid>
         </Grid>
